@@ -1,4 +1,4 @@
-# CodeQuest — Aplicativo mobile e API (MVP 0.2.0)
+# CodeQuest - Aplicativo mobile e API (MVP 0.2.0)
 
 **Projeto acadêmico demonstrativo | React Native + Expo + Node.js + SQLite**
 
@@ -59,11 +59,11 @@ A API usa o módulo SQLite nativo do Node.js (`node:sqlite`), sem driver nativo 
 
 ## 4. Instalação e execução
 
-### Passo 1 — Extrair e abrir o projeto
+### Passo 1 - Extrair e abrir o projeto
 
 Clone o repositório ou extraia o pacote e abra a pasta `CodeQuest` no VS Code.
 
-### Passo 2 — Instalar dependências
+### Passo 2 - Instalar dependências
 
 No terminal integrado, execute:
 
@@ -71,7 +71,7 @@ No terminal integrado, execute:
 npm install
 ```
 
-### Passo 3 — Iniciar a API e o banco
+### Passo 3 - Iniciar a API e o banco
 
 Abra o primeiro terminal e execute:
 
@@ -91,7 +91,7 @@ A resposta esperada é um JSON com `"ok": true` e `"database": "sqlite"`.
 
 **Não feche esse terminal enquanto estiver usando o aplicativo.**
 
-### Passo 4 — Iniciar o Expo
+### Passo 4 - Iniciar o Expo
 
 Abra um segundo terminal na pasta do projeto e execute:
 
@@ -118,7 +118,7 @@ EXPO_PUBLIC_API_URL=http://192.168.0.25:3333/api
 npx expo start --lan --clear
 ```
 
-### Passo 5 — Criar sua conta de teste
+### Passo 5 - Criar sua conta de teste
 
 No aplicativo:
 
