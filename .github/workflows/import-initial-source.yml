@@ -1,0 +1,33 @@
+name: Import CodeQuest source archive
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - bootstrap/CodeQuest-GitHub-Ready.zip
+
+permissions:
+  contents: write
+
+jobs:
+  import-source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Extract project files
+        shell: bash
+        run: |
+          mkdir -p /tmp/codequest-source
+          unzip -q bootstrap/CodeQuest-GitHub-Ready.zip -d /tmp/codequest-source
+          cp -a /tmp/codequest-source/CodeQuest/. .
+          rm -rf bootstrap
+
+      - name: Commit source tree
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "feat: import CodeQuest mobile and backend source"
+          git push
