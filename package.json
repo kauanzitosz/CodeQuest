@@ -1,0 +1,29 @@
+{
+  "name": "codequest-mobile",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "doctor": "expo install --check",
+    "server": "node --env-file-if-exists=.env backend/server.js",
+    "db:inspect": "node backend/inspect-db.js",
+    "test": "node --test",
+    "test:watch": "node --test --watch"
+  },
+  "dependencies": {
+    "expo": "~57.0.17",
+    "expo-constants": "~57.0.2",
+    "expo-secure-store": "~57.0.1",
+    "expo-status-bar": "~57.0.1",
+    "react": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-safe-area-context": "~5.7.0"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}

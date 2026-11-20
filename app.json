@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "CodeQuest",
+    "slug": "codequest",
+    "scheme": "codequest",
+    "version": "0.2.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0D1330",
+    "newArchEnabled": true,
+    "android": {
+      "package": "com.codequest.prototipo",
+      "edgeToEdgeEnabled": true
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "experiments": {
+      "reactCompiler": false
+    }
+  }
+}
