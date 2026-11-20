@@ -53,9 +53,9 @@ O arquivo `backend/schema.sql` contém a definição das tabelas, chaves primár
 - Expo Go instalado no celular.
 - Computador e celular na mesma rede Wi-Fi para testar via LAN.
 
-O projeto permanece no Expo SDK 57. Para abrir no Expo Go, instale uma versão do Expo Go compatível com SDK 57. As bibliotecas `expo-constants` e `expo-secure-store` estão fixadas em versões compatíveis com essa linha do SDK.
+O projeto permanece no Expo SDK 57. As bibliotecas `expo-constants` e `expo-secure-store` estão fixadas em versões compatíveis com essa linha do SDK.
 
-A API usa o módulo SQLite nativo do Node.js (`node:sqlite`), sem driver nativo adicional. No Node 22 ele pode exibir um aviso de recurso experimental; o aviso não significa que a execução falhou. O Node 24 mais recente oferece um estágio de estabilidade mais avançado para esse módulo.
+A API usa o módulo SQLite nativo do Node.js (`node:sqlite`), sem driver nativo adicional.
 
 ## 4. Instalação e execução
 
@@ -117,8 +117,6 @@ EXPO_PUBLIC_API_URL=http://192.168.0.25:3333/api
 ```bash
 npx expo start --lan --clear
 ```
-
-Se o Windows perguntar, permita o Node.js em redes privadas. Não abra a porta 3333 para a Internet; ela é apenas para esta demonstração local.
 
 ### Passo 5 — Criar sua conta de teste
 
@@ -196,43 +194,4 @@ Os testes cobrem:
 
 As rotas protegidas recebem o token no cabeçalho `Authorization: Bearer <token>`.
 
-## 8. Arquivos novos e alterados
 
-```text
-backend/
-├── auth-service.js       # cadastro, login, senha e sessões
-├── database.js           # abertura e inicialização do SQLite
-├── schema.sql            # tabelas, chaves e índices
-├── server.js             # API HTTP
-├── inspect-db.js         # inspeção sem segredos
-└── tests/
-    ├── api.test.js
-    └── auth.test.js
-
-src/services/api.js       # cliente HTTP usado pelo app
-src/screens/AuthScreens.js# telas de cadastro e login reais
-App.js                    # restauração da sessão e sincronização do perfil
-```
-
-## 9. Segurança e limites desta etapa
-
-- Senhas não são armazenadas em texto puro. O backend deriva um hash com `scrypt` e salt aleatório individual.
-- O token de sessão é aleatório; o banco guarda somente seu SHA-256. O token no celular fica no `expo-secure-store`, não no AsyncStorage.
-- A API tem limite básico de tentativas de cadastro/login por IP para a demonstração.
-- Nesta etapa, o endpoint de perfil recebe os indicadores de progresso enviados pelo aplicativo para demonstrar persistência. Antes de produção, o servidor deverá calcular e validar recompensas (XP/gems) por eventos de lição, em vez de aceitar os totais enviados pelo cliente.
-- A comunicação HTTP está sem TLS porque o servidor é local e didático. Use apenas uma conta e senha de teste em rede privada confiável. Não use senhas reais nem exponha a porta 3333 publicamente.
-- Antes de produção, ainda precisamos de HTTPS, política de rate limit robusta, recuperação/verificação de e-mail, gestão de segredos, backups, logs e revisão de segurança.
-- A conta não é um cadastro de produção e não está hospedada na AWS. A API e o SQLite ficam no computador que executa o backend.
-
-## 10. Documentação do repositório
-
-- [Arquitetura de login e banco](docs/ARQUITETURA_LOGIN_BANCO.md)
-- [Estado atual e próximos passos](docs/STATUS_DO_PROJETO.md)
-- [Protótipo Figma](docs/FIGMA.md)
-- [Roteiro de demonstração](APRESENTACAO_PARA_AULA.md)
-- [Política de segurança](SECURITY.md)
-- [Como contribuir](CONTRIBUTING.md)
-
-## 11. Próxima etapa recomendada
-
-Depois de demonstrar cadastro/login e persistência, a continuação natural é migrar o esquema para PostgreSQL, colocar a API em um servidor e começar a servir cursos e lições pelo backend, mantendo a mesma experiência mobile.
