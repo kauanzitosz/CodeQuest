@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - bootstrap/CodeQuest-GitHub-Ready.zip
+      - bootstrap/CodeQuest-GitHub-Ready.tar.xz
 
 permissions:
   contents: write
@@ -20,7 +20,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p /tmp/codequest-source
-          unzip -q bootstrap/CodeQuest-GitHub-Ready.zip -d /tmp/codequest-source
+          tar -xJf bootstrap/CodeQuest-GitHub-Ready.tar.xz -C /tmp/codequest-source
           cp -a /tmp/codequest-source/CodeQuest/. .
           rm -rf bootstrap
 
